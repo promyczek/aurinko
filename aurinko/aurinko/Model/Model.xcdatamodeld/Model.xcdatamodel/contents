@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Quote" representedClassName="Quote" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuoteCategory" inverseName="quotes" inverseEntity="QuoteCategory" syncable="YES"/>
+    </entity>
+    <entity name="QuoteCategory" representedClassName="QuoteCategory" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quote" inverseName="category" inverseEntity="Quote" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Quote" positionX="-252" positionY="54" width="128" height="88"/>
+        <element name="QuoteCategory" positionX="-54" positionY="-9" width="128" height="88"/>
+    </elements>
+</model>
