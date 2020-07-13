@@ -14,42 +14,37 @@ struct SettingsView: View {
     static let hours = Array(0...23)
     static let minutes = Array(0...59)
     
-    @State private var fastingType = 0
-    @State private var fastingStartHour = 15
-    @State private var fastingStartMinutes = 30
-    @State private var fastingEndHour = 7
-    @State private var fastingEndMinutes = 30
-    @State private var sendNotifications = false
+    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
         Form {
             Section {
-                Picker("Intermittent fasting version", selection: $fastingType) {
+                Picker("Intermittent fasting version", selection: self.$settings.fastingType) {
                     ForEach(0 ..< Self.fastingTypes.count) {
                         Text(Self.fastingTypes[$0])
                     }
                 }
             }
             Section(header: Text("Fasting start")) {
-                Picker("Hour", selection: $fastingStartHour) {
+                Picker("Hour", selection: self.$settings.fastingStartHour) {
                     ForEach(0 ..< Self.hours.count) {
                         Text("\(Self.hours[$0])")
                     }
                 }
-                Picker("Minutes", selection: $fastingStartMinutes) {
+                Picker("Minutes", selection: self.$settings.fastingStartMinutes) {
                     ForEach(0 ..< Self.minutes.count) {
                         Text("\(Self.minutes[$0])")
                     }
                 }
             }
-            if fastingType == 3 {
+            if self.settings.fastingType == 3 {
                 Section(header: Text("Fasting end")) {
-                    Picker("Hour", selection: $fastingEndHour) {
+                    Picker("Hour", selection: self.$settings.fastingEndHour) {
                         ForEach(0 ..< Self.hours.count) {
                             Text("\(Self.hours[$0])")
                         }
                     }
-                    Picker("Minutes", selection: $fastingEndMinutes) {
+                    Picker("Minutes", selection: self.$settings.fastingEndMinutes) {
                         ForEach(0 ..< Self.minutes.count) {
                             Text("\(Self.minutes[$0])")
                         }
@@ -58,7 +53,7 @@ struct SettingsView: View {
             }
             
             Section {
-                Toggle("Send me notifications", isOn: $sendNotifications)
+                Toggle("Send me notifications", isOn: self.$settings.sendNotifications)
             }
         }.navigationBarTitle("Settings")
     }
