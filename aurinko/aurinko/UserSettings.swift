@@ -16,6 +16,7 @@ class UserSettings: ObservableObject {
     static let endHourKey = "EndHour"
     static let endMinutesKey = "EndMinutes"
     static let sendNotificationsKey = "SendNotifications"
+    static let fastingTypes = ["16/8", "18/6", "20/4", "custom"]
     
     @Published var fastingType: Int = UserDefaults.standard.integer(forKey: fastingTypeKey) {
         didSet {
@@ -47,7 +48,7 @@ class UserSettings: ObservableObject {
             UserDefaults.standard.set(self.sendNotifications, forKey: Self.sendNotificationsKey)
             if self.sendNotifications {
                 let scheduler = LocalNotificationScheduler()
-                scheduler.requestAuthorization(for: self)
+                scheduler.requestAuthorization()
             }
         }
     }

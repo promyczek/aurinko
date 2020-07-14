@@ -12,12 +12,9 @@ import UserNotifications
 class LocalNotificationScheduler {
     
     let center = UNUserNotificationCenter.current()
-    var settings: UserSettings? = nil
+    var userSettings: UserSettings = UserSettings()
     
     func scheduleNotifications() {
-        guard let userSettings = settings else {
-            return
-        }
         
         let content = UNMutableNotificationContent()
         content.title = "Hello Sunshine"
@@ -25,20 +22,37 @@ class LocalNotificationScheduler {
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = "alarm"
         
-        var dateComponets = DateComponents()
-        dateComponets.hour = userSettings.fastingStartHour
-        dateComponets.minute = userSettings.fastingStartMinutes
+        var dateComponents = DateComponents()
+        dateComponents.hour = userSettings.fastingStartHour
+        dateComponents.minute = userSettings.fastingStartMinutes
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponets, repeats: true)
-        let request = UNNotificationRequest(identifier: "startFasting", content: content, trigger: trigger)
+        registerNotification(content: content, dateComponents: dateComponents, identifier: "startFasting")
+        
+        content.body = "Congrats! you can eat now! Enjoy your meals!"
+        let fastingTypes = UserSettings.fastingTypes
+        if fastingTypes[userSettings.fastingType] == "custom" {
+            dateComponents.hour = userSettings.fastingEndHour
+            dateComponents.minute = userSettings.fastingEndMinutes
+        } else {
+            let fastingHoursString = fastingTypes[userSettings.fastingType].split(separator: "/")[0]
+            if let fastingHours = Int(fastingHoursString) {
+                dateComponents.hour = (userSettings.fastingStartHour + fastingHours) % 24
+            }
+        }
+        
+        registerNotification(content: content, dateComponents: dateComponents, identifier: "endFasting")
+    }
+    
+    func registerNotification(content: UNMutableNotificationContent, dateComponents: DateComponents, identifier: String) {
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         center.add(request)
     }
     
-    func requestAuthorization(for settings: UserSettings) {
-        self.settings = settings
+    func requestAuthorization() {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted {
-                self.scheduleNotifications()
+                print("Notifications granted")
             } else {
                 print("User did not granted")
             }

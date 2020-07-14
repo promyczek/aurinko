@@ -18,6 +18,10 @@ struct ContentView: View {
             }
             .navigationBarTitle("Hello")
             .navigationBarItems(trailing: settingsButton)
+            .onAppear() {
+                let scheduler = LocalNotificationScheduler()
+                scheduler.scheduleNotifications()
+            }
         }
     }
     

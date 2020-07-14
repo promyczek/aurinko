@@ -10,11 +10,11 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    static let fastingTypes = ["16/8", "18/6", "20/4", "custom"]
+    @EnvironmentObject var settings: UserSettings
+    
+    static let fastingTypes = UserSettings.fastingTypes
     static let hours = Array(0...23)
     static let minutes = Array(0...59)
-    
-    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
         Form {
@@ -56,10 +56,6 @@ struct SettingsView: View {
                 Toggle("Send me notifications", isOn: self.$settings.sendNotifications)
             }
         }.navigationBarTitle("Settings")
-         .onDisappear() {
-            let scheduler = LocalNotificationScheduler()
-            scheduler.requestAuthorization(for: settings)
-        }
     }
 }
 
