@@ -27,8 +27,11 @@ struct ContentView: View {
     
     var settingsButton: some View {
         NavigationLink(destination: SettingsView()) {
-            Image(systemName: "gear")
-        }
+            HStack {
+                Text("Settings")
+                Image(systemName: "gear")
+            }
+        }.buttonStyle(PlainButtonStyle())
     }
 }
 
