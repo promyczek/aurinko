@@ -27,7 +27,7 @@ struct ContentView: View {
     
     var settingsButton: some View {
         NavigationLink(destination: SettingsView()) {
-            Image(systemName: "square.and.pencil")
+            Image(systemName: "gear")
         }
     }
 }
