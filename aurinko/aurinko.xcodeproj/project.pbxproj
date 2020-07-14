@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8146D775249FB992000330B5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146D774249FB992000330B5 /* SettingsView.swift */; };
 		817E6F9E24BC757C0058D6CE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E6F9D24BC757C0058D6CE /* UserSettings.swift */; };
+		817E6FA024BD96C10058D6CE /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E6F9F24BD96C10058D6CE /* LocalNotificationScheduler.swift */; };
 		8187BDE02496A141003B8F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187BDDF2496A141003B8F12 /* AppDelegate.swift */; };
 		8187BDE22496A141003B8F12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187BDE12496A141003B8F12 /* SceneDelegate.swift */; };
 		8187BDE42496A141003B8F12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187BDE32496A141003B8F12 /* ContentView.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		8146D774249FB992000330B5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		817E6F9D24BC757C0058D6CE /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		817E6F9F24BD96C10058D6CE /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationScheduler.swift; sourceTree = "<group>"; };
 		8187BDDC2496A141003B8F12 /* aurinko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aurinko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8187BDDF2496A141003B8F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8187BDE12496A141003B8F12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				8187BDED2496A146003B8F12 /* Info.plist */,
 				8187BDE72496A146003B8F12 /* Preview Content */,
 				817E6F9D24BC757C0058D6CE /* UserSettings.swift */,
+				817E6F9F24BD96C10058D6CE /* LocalNotificationScheduler.swift */,
 			);
 			path = aurinko;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817E6FA024BD96C10058D6CE /* LocalNotificationScheduler.swift in Sources */,
 				8187BDE02496A141003B8F12 /* AppDelegate.swift in Sources */,
 				8146D775249FB992000330B5 /* SettingsView.swift in Sources */,
 				8187BDE22496A141003B8F12 /* SceneDelegate.swift in Sources */,

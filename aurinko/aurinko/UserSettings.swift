@@ -45,6 +45,10 @@ class UserSettings: ObservableObject {
     @Published var sendNotifications: Bool = UserDefaults.standard.bool(forKey: sendNotificationsKey) {
         didSet {
             UserDefaults.standard.set(self.sendNotifications, forKey: Self.sendNotificationsKey)
+            if self.sendNotifications {
+                let scheduler = LocalNotificationScheduler()
+                scheduler.requestAuthorization(for: self)
+            }
         }
     }
 }

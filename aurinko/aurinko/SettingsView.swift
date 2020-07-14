@@ -56,6 +56,10 @@ struct SettingsView: View {
                 Toggle("Send me notifications", isOn: self.$settings.sendNotifications)
             }
         }.navigationBarTitle("Settings")
+         .onDisappear() {
+            let scheduler = LocalNotificationScheduler()
+            scheduler.requestAuthorization(for: settings)
+        }
     }
 }
 
