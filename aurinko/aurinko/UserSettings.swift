@@ -10,6 +10,7 @@ import Foundation
 
 class UserSettings: ObservableObject {
     
+    static let userNameKey = "UserName"
     static let fastingTypeKey = "FastingType"
     static let startHourKey = "StartHour"
     static let startMinutesKey = "StartMinutes"
@@ -18,6 +19,11 @@ class UserSettings: ObservableObject {
     static let sendNotificationsKey = "SendNotifications"
     static let fastingTypes = ["16/8", "18/6", "20/4", "custom"]
     
+    @Published var userName: String = UserDefaults.standard.string(forKey: userNameKey) ?? "" {
+        didSet {
+            UserDefaults.standard.set(self.userName, forKey: Self.userNameKey)
+        }
+    }
     @Published var fastingType: Int = UserDefaults.standard.integer(forKey: fastingTypeKey) {
         didSet {
             UserDefaults.standard.set(self.fastingType, forKey: Self.fastingTypeKey)

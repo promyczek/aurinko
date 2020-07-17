@@ -8,20 +8,28 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    
+    @EnvironmentObject var settings: UserSettings
+    @State private var isPresented = false
+    
     var body: some View {
         NavigationView {
             VStack {
-                Text("Hello, World!")
+                Text("Hello, \(settings.userName)!")
                     .font(.headline)
-                Text("tadam")
             }
-            .navigationBarTitle("Hello")
+            .navigationBarTitle(settings.userName.isEmpty ? "Hello Sunshine!" : "Hello \(settings.userName)")
             .navigationBarItems(trailing: settingsButton)
             .onAppear() {
+                if settings.userName.isEmpty {
+                    isPresented = true
+                }
+                
                 let scheduler = LocalNotificationScheduler()
                 scheduler.scheduleNotifications()
             }
+            .fullScreenCover(isPresented: $isPresented, content: FirstLaunchView.init)
         }
     }
     
@@ -37,6 +45,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

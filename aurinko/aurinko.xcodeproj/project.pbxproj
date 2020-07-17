@@ -10,9 +10,10 @@
 		8146D775249FB992000330B5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146D774249FB992000330B5 /* SettingsView.swift */; };
 		817E6F9E24BC757C0058D6CE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E6F9D24BC757C0058D6CE /* UserSettings.swift */; };
 		817E6FA024BD96C10058D6CE /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E6F9F24BD96C10058D6CE /* LocalNotificationScheduler.swift */; };
+		817E6FA224BE0D920058D6CE /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E6FA124BE0D920058D6CE /* FirstLaunchView.swift */; };
 		8187BDE02496A141003B8F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187BDDF2496A141003B8F12 /* AppDelegate.swift */; };
 		8187BDE22496A141003B8F12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187BDE12496A141003B8F12 /* SceneDelegate.swift */; };
-		8187BDE42496A141003B8F12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187BDE32496A141003B8F12 /* ContentView.swift */; };
+		8187BDE42496A141003B8F12 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187BDE32496A141003B8F12 /* MainView.swift */; };
 		8187BDE62496A146003B8F12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8187BDE52496A146003B8F12 /* Assets.xcassets */; };
 		8187BDE92496A146003B8F12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8187BDE82496A146003B8F12 /* Preview Assets.xcassets */; };
 		8187BDEC2496A146003B8F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8187BDEA2496A146003B8F12 /* LaunchScreen.storyboard */; };
@@ -22,10 +23,11 @@
 		8146D774249FB992000330B5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		817E6F9D24BC757C0058D6CE /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		817E6F9F24BD96C10058D6CE /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationScheduler.swift; sourceTree = "<group>"; };
+		817E6FA124BE0D920058D6CE /* FirstLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
 		8187BDDC2496A141003B8F12 /* aurinko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aurinko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8187BDDF2496A141003B8F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8187BDE12496A141003B8F12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8187BDE32496A141003B8F12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8187BDE32496A141003B8F12 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8187BDE52496A146003B8F12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8187BDE82496A146003B8F12 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8187BDEB2496A146003B8F12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 			children = (
 				8187BDDF2496A141003B8F12 /* AppDelegate.swift */,
 				8187BDE12496A141003B8F12 /* SceneDelegate.swift */,
-				8187BDE32496A141003B8F12 /* ContentView.swift */,
+				8187BDE32496A141003B8F12 /* MainView.swift */,
 				8146D774249FB992000330B5 /* SettingsView.swift */,
 				8187BDE52496A146003B8F12 /* Assets.xcassets */,
 				8187BDEA2496A146003B8F12 /* LaunchScreen.storyboard */,
@@ -72,6 +74,7 @@
 				8187BDE72496A146003B8F12 /* Preview Content */,
 				817E6F9D24BC757C0058D6CE /* UserSettings.swift */,
 				817E6F9F24BD96C10058D6CE /* LocalNotificationScheduler.swift */,
+				817E6FA124BE0D920058D6CE /* FirstLaunchView.swift */,
 			);
 			path = aurinko;
 			sourceTree = "<group>";
@@ -156,11 +159,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				817E6FA024BD96C10058D6CE /* LocalNotificationScheduler.swift in Sources */,
+				817E6FA224BE0D920058D6CE /* FirstLaunchView.swift in Sources */,
 				8187BDE02496A141003B8F12 /* AppDelegate.swift in Sources */,
 				8146D775249FB992000330B5 /* SettingsView.swift in Sources */,
 				8187BDE22496A141003B8F12 /* SceneDelegate.swift in Sources */,
 				817E6F9E24BC757C0058D6CE /* UserSettings.swift in Sources */,
-				8187BDE42496A141003B8F12 /* ContentView.swift in Sources */,
+				8187BDE42496A141003B8F12 /* MainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
