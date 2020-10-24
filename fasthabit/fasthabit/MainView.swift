@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  fasthabit
 //
 //  Created by Ania on 14/06/2020.

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FirstLaunchView: View {
     
-    @ObservedObject var settings: UserSettings = UserSettings()
+    @EnvironmentObject var settings: UserSettings
     @State var userName: String = ""
     @Environment(\.presentationMode) var presentationMode
     
