@@ -16,6 +16,9 @@ struct SettingsView: View {
     static let hours = Array(0...23)
     static let minutes = Array(0...59)
     
+    @State private var fastingStart = defaultFastingTime
+    @State private var fastingEnd = defaultFastingTime
+    
     var body: some View {
         Form {
             Section {
@@ -26,29 +29,15 @@ struct SettingsView: View {
                 }
             }
             Section(header: Text("Fasting start")) {
-                Picker("Hour", selection: self.$settings.fastingStartHour) {
-                    ForEach(0 ..< Self.hours.count) {
-                        Text("\(Self.hours[$0])")
-                    }
-                }
-                Picker("Minutes", selection: self.$settings.fastingStartMinutes) {
-                    ForEach(0 ..< Self.minutes.count) {
-                        Text("\(Self.minutes[$0])")
-                    }
-                }
+                DatePicker("Please enter fasting start time", selection: self.$settings.startTime, displayedComponents: .hourAndMinute)
+                    .labelsHidden()
+                    .datePickerStyle(WheelDatePickerStyle())
             }
             if self.settings.fastingType == 3 {
                 Section(header: Text("Fasting end")) {
-                    Picker("Hour", selection: self.$settings.fastingEndHour) {
-                        ForEach(0 ..< Self.hours.count) {
-                            Text("\(Self.hours[$0])")
-                        }
-                    }
-                    Picker("Minutes", selection: self.$settings.fastingEndMinutes) {
-                        ForEach(0 ..< Self.minutes.count) {
-                            Text("\(Self.minutes[$0])")
-                        }
-                    }
+                    DatePicker("Please enter fasting end time", selection: self.$settings.endTime, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                        .datePickerStyle(WheelDatePickerStyle())
                 }
             }
             
@@ -56,6 +45,13 @@ struct SettingsView: View {
                 Toggle("Send me notifications", isOn: self.$settings.sendNotifications)
             }
         }.navigationBarTitle("Settings")
+    }
+    
+    static var defaultFastingTime: Date {
+        var components = DateComponents()
+        components.hour = 16
+        components.minute = 30
+        return Calendar.current.date(from: components) ?? Date()
     }
 }
 

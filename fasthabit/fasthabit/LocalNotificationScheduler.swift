@@ -22,21 +22,19 @@ class LocalNotificationScheduler {
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = "alarm"
         
-        var dateComponents = DateComponents()
-        dateComponents.hour = userSettings.fastingStartHour
-        dateComponents.minute = userSettings.fastingStartMinutes
+        var dateComponents = Calendar.current.dateComponents([.hour, .minute], from: userSettings.startTime)
+        let startHour = dateComponents.hour ?? 0
         
         registerNotification(content: content, dateComponents: dateComponents, identifier: "startFasting")
         
         content.body = "Congrats! you can eat now! Enjoy your meals!"
         let fastingTypes = UserSettings.fastingTypes
         if fastingTypes[userSettings.fastingType] == "custom" {
-            dateComponents.hour = userSettings.fastingEndHour
-            dateComponents.minute = userSettings.fastingEndMinutes
+            dateComponents = Calendar.current.dateComponents([.hour, .minute], from: userSettings.endTime)
         } else {
             let fastingHoursString = fastingTypes[userSettings.fastingType].split(separator: "/")[0]
             if let fastingHours = Int(fastingHoursString) {
-                dateComponents.hour = (userSettings.fastingStartHour + fastingHours) % 24
+                dateComponents.hour = (startHour + fastingHours) % 24
             }
         }
         
