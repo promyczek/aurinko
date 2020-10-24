@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  aurinko
+//  fasthabit
 //
 //  Created by Ania on 14/06/2020.
 //  Copyright © 2020 Zamora. All rights reserved.
