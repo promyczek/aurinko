@@ -13,14 +13,12 @@ struct SettingsView: View {
     @EnvironmentObject var settings: UserSettings
     
     static let fastingTypes = UserSettings.fastingTypes
-    static let hours = Array(0...23)
-    static let minutes = Array(0...59)
-    
-    @State private var fastingStart = defaultFastingTime
-    @State private var fastingEnd = defaultFastingTime
-    
+  
     var body: some View {
         Form {
+            Section(header: Text("Name")) {
+                TextField("username: ", text: self.$settings.userName)
+            }
             Section {
                 Picker("Intermittent fasting version", selection: self.$settings.fastingType) {
                     ForEach(0 ..< Self.fastingTypes.count) {
@@ -45,13 +43,6 @@ struct SettingsView: View {
                 Toggle("Send me notifications", isOn: self.$settings.sendNotifications)
             }
         }.navigationBarTitle("Settings")
-    }
-    
-    static var defaultFastingTime: Date {
-        var components = DateComponents()
-        components.hour = 16
-        components.minute = 30
-        return Calendar.current.date(from: components) ?? Date()
     }
 }
 

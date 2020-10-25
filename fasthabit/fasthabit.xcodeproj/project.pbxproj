@@ -60,12 +60,10 @@
 		814928EC25448B9600762201 /* fasthabit */ = {
 			isa = PBXGroup;
 			children = (
+				814929232545A69C00762201 /* views */,
 				814928ED25448B9600762201 /* fasthabitApp.swift */,
-				8149290E25448F9200762201 /* SettingsView.swift */,
 				8149291125448FA500762201 /* UserSettings.swift */,
 				8149291425448FAC00762201 /* LocalNotificationScheduler.swift */,
-				8149291A25448FC200762201 /* MainView.swift */,
-				8149291725448FBC00762201 /* FirstLaunchView.swift */,
 				814928F125448B9900762201 /* Assets.xcassets */,
 				814928F625448B9900762201 /* Info.plist */,
 				814928F325448B9900762201 /* Preview Content */,
@@ -79,6 +77,16 @@
 				814928F425448B9900762201 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		814929232545A69C00762201 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8149291A25448FC200762201 /* MainView.swift */,
+				8149291725448FBC00762201 /* FirstLaunchView.swift */,
+				8149290E25448F9200762201 /* SettingsView.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
