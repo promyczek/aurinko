@@ -11,11 +11,22 @@ class FastingTime {
     
     static func getTimeComponents(date: Date) -> DateComponents {
         let calendar = Calendar.autoupdatingCurrent
-        return calendar.dateComponents([.hour, .minute], from: date)
+        return calendar.dateComponents([.hour, .minute, .second], from: date)
     }
     
     static func timeInMinutes(dateComponents: DateComponents) -> Int {
         return (dateComponents.hour ?? 0) * 60 + (dateComponents.minute ?? 0)
+    }
+    
+    static func timeInSeconds(date: Date) -> Int {
+        let calendar = Calendar.autoupdatingCurrent
+        let dateComponents = calendar.dateComponents([.hour, .minute, .second], from: date)
+        var seconds = 0
+        seconds += (dateComponents.hour ?? 0) * 60 * 60
+        seconds += (dateComponents.minute ?? 0) * 60
+        seconds += (dateComponents.second ?? 0)
+        
+        return seconds
     }
     
     static func isFastingTime(settings: UserSettings) -> Bool {
@@ -29,13 +40,26 @@ class FastingTime {
         
         if (startMinutes <= currentMinutes && currentMinutes <= endMinutes) {
             return true
-        } else if (startMinutes >= 720 && currentMinutes >= startMinutes) {
+            
+        } else if (startMinutes >= (12*60) && currentMinutes >= startMinutes) {
             return true
-        } else if (startMinutes >= 720 && currentMinutes < endMinutes) {
+            
+        } else if (startMinutes >= (12*60) && currentMinutes < endMinutes) {
             return true
+            
         } else {
             return false
+            
         }
     }
     
+    static func calculateRemaingTime(from startDate: Date, to date: Date) -> Int {
+        let now = timeInSeconds(date: startDate)
+        let to = timeInSeconds(date: date)
+        if (to >= now) {
+            return to - now
+        } else {
+            return to + (24 * 60 * 60) - now
+        }
+    }
 }

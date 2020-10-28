@@ -50,13 +50,15 @@ struct MainView: View {
         }
     }
     
-    func countDownString(from date: Date, until nowDate: Date) -> String {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: date)
-        return String(format: "%02dh:%02dm:%02ds",
-                      abs(components.hour ?? 00),
-                      abs(components.minute ?? 00),
-                      abs(components.second ?? 00))
+    func countDownString(from nowDate: Date, until date: Date) -> String {
+        print("Saved date in UserSettings \(date)")
+        //both dates can have different days somewhere in the past, so I cannot count down until "date"
+        let secondsLeft = Double(FastingTime.calculateRemaingTime(from: nowDate, to: date))
+        let futureDate = nowDate.addingTimeInterval(secondsLeft)
+        print("Calculated date in future: \(futureDate)")
+        let calendar = Calendar.autoupdatingCurrent
+        let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: futureDate)
+        return String(format: "%02dh:%02dm:%02ds", abs(components.hour ?? 00), abs(components.minute ?? 00), abs(components.second ?? 00))
     }
     
     var timerView: some View {
