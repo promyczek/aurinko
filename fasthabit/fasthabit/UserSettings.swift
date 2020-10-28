@@ -25,11 +25,13 @@ class UserSettings: ObservableObject {
     @Published var fastingType: Int = UserDefaults.standard.integer(forKey: fastingTypeKey) {
         didSet {
             UserDefaults.standard.set(self.fastingType, forKey: Self.fastingTypeKey)
+            specifyEndTime()
         }
     }
     @Published var startTime: Date = UserDefaults.standard.object(forKey: startTimeKey) as? Date ?? Date() {
         didSet {
             UserDefaults.standard.set(self.startTime, forKey: Self.startTimeKey)
+            specifyEndTime()
         }
     }
     @Published var endTime: Date = UserDefaults.standard.object(forKey: endTimeKey) as? Date ?? Date() {
@@ -43,6 +45,15 @@ class UserSettings: ObservableObject {
             if self.sendNotifications {
                 let scheduler = LocalNotificationScheduler()
                 scheduler.requestAuthorization()
+            }
+        }
+    }
+    
+    private func specifyEndTime() {
+        if (fastingType != Self.fastingTypes.firstIndex(of: "custom")) {
+            let hoursOfFastingString = String(Self.fastingTypes[fastingType].split(separator: "/")[0])
+            if let hoursOfFasting = Double(hoursOfFastingString) {
+                endTime = startTime.addingTimeInterval(hoursOfFasting * 60 * 60)
             }
         }
     }
