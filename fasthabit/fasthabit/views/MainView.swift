@@ -41,17 +41,7 @@ struct MainView: View {
     }
     
     var isFastingTime: Bool {
-        //BUG what if you start fastig on 7PM and
-        let startTime =  60 * Calendar.current.component(.hour, from: self.settings.startTime) + Calendar.current.component(.minute, from: self.settings.startTime)
-        let endTime = 60 * Calendar.current.component(.hour, from: self.settings.endTime) + Calendar.current.component(.minute, from: self.settings.endTime)
-        
-        let now = Date()
-        let nowInMinutes = 60 * Calendar.current.component(.hour, from: now) + Calendar.current.component(.minute, from: now)
-        if nowInMinutes >= startTime && nowInMinutes <= endTime {
-            return true
-        } else {
-            return false
-        }
+        return FastingTime.isFastingTime(settings: settings)
     }
     
     var timer: Timer {

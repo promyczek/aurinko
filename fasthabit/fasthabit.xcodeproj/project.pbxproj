@@ -15,6 +15,7 @@
 		8149291525448FAC00762201 /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291425448FAC00762201 /* LocalNotificationScheduler.swift */; };
 		8149291825448FBC00762201 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291725448FBC00762201 /* FirstLaunchView.swift */; };
 		8149291B25448FC200762201 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291A25448FC200762201 /* MainView.swift */; };
+		81FF79E3254962B700A11B85 /* FastingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FF79E2254962B700A11B85 /* FastingTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8149291425448FAC00762201 /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationScheduler.swift; sourceTree = "<group>"; };
 		8149291725448FBC00762201 /* FirstLaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
 		8149291A25448FC200762201 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		81FF79E2254962B700A11B85 /* FastingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				814928ED25448B9600762201 /* fasthabitApp.swift */,
 				8149291125448FA500762201 /* UserSettings.swift */,
 				8149291425448FAC00762201 /* LocalNotificationScheduler.swift */,
+				81FF79E2254962B700A11B85 /* FastingTime.swift */,
 				814928F125448B9900762201 /* Assets.xcassets */,
 				814928F625448B9900762201 /* Info.plist */,
 				814928F325448B9900762201 /* Preview Content */,
@@ -160,6 +163,7 @@
 			files = (
 				8149291525448FAC00762201 /* LocalNotificationScheduler.swift in Sources */,
 				8149291B25448FC200762201 /* MainView.swift in Sources */,
+				81FF79E3254962B700A11B85 /* FastingTime.swift in Sources */,
 				8149291825448FBC00762201 /* FirstLaunchView.swift in Sources */,
 				8149290F25448F9200762201 /* SettingsView.swift in Sources */,
 				8149291225448FA500762201 /* UserSettings.swift in Sources */,
