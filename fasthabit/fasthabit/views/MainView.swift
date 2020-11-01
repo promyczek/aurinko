@@ -13,16 +13,16 @@ struct MainView: View {
     @EnvironmentObject var settings: UserSettings
     @State private var isPresented = false
     @State private var multiplier: CGFloat = 1.0
+    @Environment(\.colorScheme) var colorScheme
     
     @State var nowDate: Date = Date()
     
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.white, .blue]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
+                LinearGradient(gradient: Gradient(colors: [.blue, .white]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
-                circlesView
-                    .animation(.interpolatingSpring(stiffness: 5, damping: 1))
+                circleLayer
                 
                 timerView
                     .navigationBarTitle(settings.userName.isEmpty ? "Hello Sunshine!" : "Hello \(settings.userName)")
@@ -86,43 +86,71 @@ struct MainView: View {
                 .onAppear(perform: {
                     let _ = self.timer
                     let _ = self.animationTimer
-                }).font(.headline)
+                }).modifier(Title())
         }
     }
     
-    var circlesView: some View {
+    func bubble(color: Color, blendMode: BlendMode) -> some View  {
+        return Circle().fill(color).blendMode(blendMode)
+    }
+    
+    var circleLayer: some View {
         ZStack {
-            Circle()
-                .fill(Color.green)
-                .blendMode(.softLight)
+            firstCirleLayer
+                .animation(.linear(duration: 2))
+            secondCirleLayer
+                .animation(.spring())
+        }
+    }
+    
+    var firstCirleLayer: some View {
+        ZStack {
+            bubble(color: .green, blendMode: .softLight)
                 .frame(width:150)
                 .offset(x: -100 * multiplier, y: -100)
-            Circle()
-                .fill(Color.green)
-                .blendMode(.screen)
+            bubble(color: .green, blendMode: .screen)
                 .frame(width:300 * multiplier)
                 .padding(50)
-            Circle()
-                .fill(Color.green)
-                .blendMode(.screen)
+            bubble(color: .green, blendMode: .screen)
                 .frame(width:160)
                 .offset(x: 0 * multiplier, y: 150)
-            Circle()
-                .fill(Color.green)
-                .blendMode(.softLight)
+            bubble(color: .green, blendMode: .screen)
                 .frame(width:50 * multiplier)
                 .offset(x: 150, y: 280)
-            Circle()
-                .fill(Color.green)
-                .blendMode(.screen)
+            bubble(color: .green, blendMode: .screen)
                 .frame(width:30 * multiplier)
                 .offset(x: -150, y: 160)
-            Circle()
-                .fill(Color.green)
-                .blendMode(.softLight)
+            bubble(color: .green, blendMode: .softLight)
                 .frame(width:15)
                 .offset(x: -140, y: 190 * multiplier)
         }
+    }
+    
+    var secondCirleLayer: some View {
+        ZStack {
+            bubble(color: .red, blendMode: .softLight)
+                .frame(width:100)
+                .offset(x: -130 * multiplier, y: 0)
+            bubble(color: .red, blendMode: .screen)
+                .frame(width:120)
+                .offset(x: 20 * multiplier, y: -170)
+            bubble(color: .red, blendMode: .softLight)
+                .frame(width:50 * multiplier)
+                .offset(x: 150, y: 100)
+            bubble(color: .red, blendMode: .screen)
+                .frame(width:30 * multiplier)
+                .offset(x: -130, y: 130)
+            bubble(color: .red, blendMode: .softLight)                .frame(width:15)
+                .offset(x: -140, y: 100 * multiplier)
+        }
+    }
+}
+
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.black)
     }
 }
 
