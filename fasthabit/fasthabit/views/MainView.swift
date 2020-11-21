@@ -26,7 +26,7 @@ struct MainView: View {
                 LinearGradient(gradient: Gradient(colors: [(colorScheme == .light ? .white : gradientStart), (colorScheme == .light ? gradientStart: gradientEnd)]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 
                 cirleLayer
-                    .animation(.linear(duration: 3))
+                    .animation(.linear(duration: 2))
                 
                 timerView
                     .navigationBarTitle(settings.userName.isEmpty ? "Hello Sunshine!" : "Hello \(settings.userName)")
@@ -63,7 +63,7 @@ struct MainView: View {
     }
     
     var animationTimer: Timer {
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {_ in
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
             if self.multiplier == 0.8 {
                 self.multiplier = 1.0
             } else {
