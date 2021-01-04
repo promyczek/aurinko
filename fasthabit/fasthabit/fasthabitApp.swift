@@ -14,7 +14,7 @@ struct fasthabitApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(settings)
+            MainTabView().environmentObject(settings)
         }
     }
 }

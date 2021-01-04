@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81134D9A25A3206B0096EE68 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81134D9925A3206B0096EE68 /* MainTabView.swift */; };
+		81134DA025A321D30096EE68 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81134D9F25A321D30096EE68 /* CalendarView.swift */; };
 		814928EE25448B9600762201 /* fasthabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814928ED25448B9600762201 /* fasthabitApp.swift */; };
 		814928F225448B9900762201 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814928F125448B9900762201 /* Assets.xcassets */; };
 		814928F525448B9900762201 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814928F425448B9900762201 /* Preview Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		81134D9925A3206B0096EE68 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		81134D9F25A321D30096EE68 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		814928EA25448B9600762201 /* fasthabit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fasthabit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		814928ED25448B9600762201 /* fasthabitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fasthabitApp.swift; sourceTree = "<group>"; };
 		814928F125448B9900762201 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,7 +91,9 @@
 			children = (
 				8149291A25448FC200762201 /* MainView.swift */,
 				8149291725448FBC00762201 /* FirstLaunchView.swift */,
+				81134D9925A3206B0096EE68 /* MainTabView.swift */,
 				8149290E25448F9200762201 /* SettingsView.swift */,
+				81134D9F25A321D30096EE68 /* CalendarView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -164,7 +170,9 @@
 				8149291525448FAC00762201 /* LocalNotificationScheduler.swift in Sources */,
 				8149291B25448FC200762201 /* MainView.swift in Sources */,
 				81FF79E3254962B700A11B85 /* FastingTime.swift in Sources */,
+				81134D9A25A3206B0096EE68 /* MainTabView.swift in Sources */,
 				8149291825448FBC00762201 /* FirstLaunchView.swift in Sources */,
+				81134DA025A321D30096EE68 /* CalendarView.swift in Sources */,
 				8149290F25448F9200762201 /* SettingsView.swift in Sources */,
 				8149291225448FA500762201 /* UserSettings.swift in Sources */,
 				814928EE25448B9600762201 /* fasthabitApp.swift in Sources */,

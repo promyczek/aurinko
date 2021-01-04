@@ -11,11 +11,10 @@ import SwiftUI
 struct MainView: View {
     
     @EnvironmentObject var settings: UserSettings
-    @State private var isPresented = false
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var multiplier: CGFloat = 1.0
     @State var nowDate: Date = Date()
-    
-    @Environment(\.colorScheme) var colorScheme
     
     let gradientEnd = Color(red: 95.0/255, green: 169.0/255, blue: 244.0/255)
     let gradientStart = Color(red: 79.0/255, green: 178.0/255, blue: 141.0/255)
@@ -30,26 +29,8 @@ struct MainView: View {
                 
                 timerView
                     .navigationBarTitle(settings.userName.isEmpty ? "Hello Sunshine!" : "Hello \(settings.userName)")
-                    .navigationBarItems(trailing: settingsButton)
-                    .onAppear() {
-                        if settings.userName.isEmpty {
-                            isPresented = true
-                        }
-                        
-                        let scheduler = LocalNotificationScheduler()
-                        scheduler.scheduleNotifications()
-                    }
-                    .fullScreenCover(isPresented: $isPresented, content: FirstLaunchView.init)
             }
         }
-    }
-    
-    var settingsButton: some View {
-        NavigationLink(destination: SettingsView()) {
-            HStack {
-                Text("Settings")
-            }
-        }.buttonStyle(PlainButtonStyle())
     }
     
     var isFastingTime: Bool {
@@ -79,7 +60,7 @@ struct MainView: View {
                 .padding(50)
             bubble(color: gradientStart)
                 .frame(width:50 * multiplier)
-                .offset(x: 150 * multiplier, y: 280)
+                .offset(x: 150 * multiplier, y: 230)
             bubble(color: gradientStart)
                 .frame(width:30 * multiplier)
                 .offset(x: -140 * multiplier, y: 130)
