@@ -12,9 +12,12 @@ struct MainTabView: View {
     @EnvironmentObject var settings: UserSettings
     @State private var isPresented = false
     
+    static let darkBlue = Color(red: 16.0/255, green: 61.0/255, blue: 105.0/255)
+    static let lightGreen = Color(red: 79.0/255, green: 178.0/255, blue: 141.0/255)
+    
     var body: some View {
         TabView {
-            MainView()
+            TimerView()
                 .tabItem {
                     Image(systemName: "clock")
                     Text("Timer")

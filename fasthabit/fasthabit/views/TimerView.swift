@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct TimerView: View {
     
     @EnvironmentObject var settings: UserSettings
     @Environment(\.colorScheme) var colorScheme
@@ -16,18 +16,18 @@ struct MainView: View {
     @State private var multiplier: CGFloat = 1.0
     @State var nowDate: Date = Date()
     
-    let gradientEnd = Color(red: 95.0/255, green: 169.0/255, blue: 244.0/255)
-    let gradientStart = Color(red: 79.0/255, green: 178.0/255, blue: 141.0/255)
+    let lightMode = [Color.white, MainTabView.lightGreen]
+    let darkMode = [MainTabView.lightGreen, MainTabView.darkBlue]
     
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [(colorScheme == .light ? .white : gradientStart), (colorScheme == .light ? gradientStart: gradientEnd)]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
-                
+                LinearGradient(gradient: Gradient(colors: colorScheme == .light ? lightMode : darkMode), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
                 cirleLayer
                     .animation(.linear(duration: 2))
                 
-                timerView
+                counterView
                     .navigationBarTitle(settings.userName.isEmpty ? "Hello Sunshine!" : "Hello \(settings.userName)")
             }
         }
@@ -55,25 +55,25 @@ struct MainView: View {
     
     var cirleLayer: some View {
         ZStack {
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:300 * multiplier)
                 .padding(50)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:50 * multiplier)
                 .offset(x: 150 * multiplier, y: 230)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:30 * multiplier)
                 .offset(x: -140 * multiplier, y: 130)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:40 * multiplier)
                 .offset(x: 100 * multiplier, y: -170)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:10 * multiplier)
                 .offset(x: -100, y: 190 * multiplier)
         }
     }
     
-    var timerView: some View {
+    var counterView: some View {
         VStack {
             Text("Time for \(isFastingTime ? "fasting" : "eating"). Left:")
             Text(countDownString(from: nowDate, until: (isFastingTime ? self.settings.endTime : self.settings.startTime)))
@@ -86,11 +86,11 @@ struct MainView: View {
     }
     
     func countDownString(from nowDate: Date, until date: Date) -> String {
-        print("Saved date in UserSettings \(date)")
+        //print("Saved date in UserSettings \(date)")
         //both dates can have different days somewhere in the past, so I cannot count down until "date"
         let secondsLeft = Double(FastingTime.calculateRemaingTime(from: nowDate, to: date))
         let futureDate = nowDate.addingTimeInterval(secondsLeft)
-        print("Calculated date in future: \(futureDate)")
+        //print("Calculated date in future: \(futureDate)")
         let calendar = Calendar.autoupdatingCurrent
         let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: futureDate)
         return String(format: "%02dh:%02dm:%02ds", abs(components.hour ?? 00), abs(components.minute ?? 00), abs(components.second ?? 00))
@@ -107,10 +107,10 @@ struct MainView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainView()
+            TimerView()
                 .environmentObject(UserSettings())
                 .environment(\.colorScheme, .light)
-            MainView()
+            TimerView()
                 .environmentObject(UserSettings())
                 .environment(\.colorScheme, .dark)
         }

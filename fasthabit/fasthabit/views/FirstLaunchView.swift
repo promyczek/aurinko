@@ -16,12 +16,13 @@ struct FirstLaunchView: View {
     
     @State var userName: String = ""
     
-    let gradientEnd = Color(red: 95.0/255, green: 169.0/255, blue: 244.0/255)
-    let gradientStart = Color(red: 79.0/255, green: 178.0/255, blue: 141.0/255)
+    let lightMode = [Color.white, MainTabView.lightGreen]
+    let darkMode = [MainTabView.lightGreen, MainTabView.darkBlue]
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [(colorScheme == .light ? .white : gradientStart), (colorScheme == .light ? gradientStart: gradientEnd)]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: colorScheme == .light ? lightMode : darkMode), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             
             cirleLayer
                 .animation(.linear(duration: 2))
@@ -29,10 +30,12 @@ struct FirstLaunchView: View {
             VStack {
                 Text("Hello Sunshine!")
                     .font(.title)
+                    .fontWeight(.semibold)
                 TextField("Enter your name", text: $userName)
                     .frame(width: 200)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .disableAutocorrection(true)
+                    .blendMode(colorScheme == .light ? .normal : .colorDodge)
                 Button(action: {
                     self.settings.userName = self.userName
                     presentationMode.wrappedValue.dismiss()
@@ -41,8 +44,8 @@ struct FirstLaunchView: View {
                         .padding()
                         .frame(width:200)
                         .foregroundColor(.white)
-                        .background(colorScheme == .light ? gradientStart: gradientEnd)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .background(colorScheme == .light ? MainTabView.lightGreen: MainTabView.darkBlue)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
         }
@@ -50,19 +53,19 @@ struct FirstLaunchView: View {
     
     var cirleLayer: some View {
         ZStack {
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:300)
                 .padding(50)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:50)
                 .offset(x: 150, y: 280)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:30)
                 .offset(x: -140, y: 130)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:40)
                 .offset(x: 100, y: -170)
-            bubble(color: gradientStart)
+            bubble(color: MainTabView.lightGreen)
                 .frame(width:10)
                 .offset(x: -100, y: 190)
         }
@@ -75,8 +78,17 @@ struct FirstLaunchView: View {
     }
 }
 
+#if DEBUG
 struct FirstLaunchView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstLaunchView()
+        Group {
+            FirstLaunchView()
+                .environmentObject(UserSettings())
+                .environment(\.colorScheme, .light)
+            FirstLaunchView()
+                .environmentObject(UserSettings())
+                .environment(\.colorScheme, .dark)
+        }
     }
 }
+#endif

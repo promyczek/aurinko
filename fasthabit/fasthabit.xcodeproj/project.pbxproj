@@ -16,7 +16,7 @@
 		8149291225448FA500762201 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291125448FA500762201 /* UserSettings.swift */; };
 		8149291525448FAC00762201 /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291425448FAC00762201 /* LocalNotificationScheduler.swift */; };
 		8149291825448FBC00762201 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291725448FBC00762201 /* FirstLaunchView.swift */; };
-		8149291B25448FC200762201 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291A25448FC200762201 /* MainView.swift */; };
+		8149291B25448FC200762201 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149291A25448FC200762201 /* TimerView.swift */; };
 		81FF79E3254962B700A11B85 /* FastingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FF79E2254962B700A11B85 /* FastingTime.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,7 @@
 		8149291125448FA500762201 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		8149291425448FAC00762201 /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationScheduler.swift; sourceTree = "<group>"; };
 		8149291725448FBC00762201 /* FirstLaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
-		8149291A25448FC200762201 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8149291A25448FC200762201 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		81FF79E2254962B700A11B85 /* FastingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,7 @@
 		814929232545A69C00762201 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				8149291A25448FC200762201 /* MainView.swift */,
+				8149291A25448FC200762201 /* TimerView.swift */,
 				8149291725448FBC00762201 /* FirstLaunchView.swift */,
 				81134D9925A3206B0096EE68 /* MainTabView.swift */,
 				8149290E25448F9200762201 /* SettingsView.swift */,
@@ -168,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8149291525448FAC00762201 /* LocalNotificationScheduler.swift in Sources */,
-				8149291B25448FC200762201 /* MainView.swift in Sources */,
+				8149291B25448FC200762201 /* TimerView.swift in Sources */,
 				81FF79E3254962B700A11B85 /* FastingTime.swift in Sources */,
 				81134D9A25A3206B0096EE68 /* MainTabView.swift in Sources */,
 				8149291825448FBC00762201 /* FirstLaunchView.swift in Sources */,
