@@ -15,6 +15,7 @@ class UserSettings: ObservableObject {
     static let startTimeKey = "StartTime"
     static let endTimeKey = "EndTime"
     static let sendNotificationsKey = "SendNotifications"
+    static let fastingTimeSetKey = "FastingTimeSet"
     static let fastingTypes = ["16/8", "18/6", "20/4", "custom"]
     
     @Published var userName: String = UserDefaults.standard.string(forKey: userNameKey) ?? "" {
@@ -26,17 +27,20 @@ class UserSettings: ObservableObject {
         didSet {
             UserDefaults.standard.set(self.fastingType, forKey: Self.fastingTypeKey)
             specifyEndTime()
+            self.isFastingTimeSet = true
         }
     }
     @Published var startTime: Date = UserDefaults.standard.object(forKey: startTimeKey) as? Date ?? Date() {
         didSet {
             UserDefaults.standard.set(self.startTime, forKey: Self.startTimeKey)
             specifyEndTime()
+            self.isFastingTimeSet = true
         }
     }
     @Published var endTime: Date = UserDefaults.standard.object(forKey: endTimeKey) as? Date ?? Date() {
         didSet {
             UserDefaults.standard.set(self.endTime, forKey: Self.endTimeKey)
+            self.isFastingTimeSet = true
         }
     }
     @Published var sendNotifications: Bool = UserDefaults.standard.bool(forKey: sendNotificationsKey) {
@@ -45,7 +49,14 @@ class UserSettings: ObservableObject {
             if self.sendNotifications {
                 let scheduler = LocalNotificationScheduler()
                 scheduler.requestAuthorization()
+                self.isFastingTimeSet = true
             }
+        }
+    }
+    
+    @Published var isFastingTimeSet: Bool = UserDefaults.standard.bool(forKey: fastingTimeSetKey) {
+        didSet {
+            UserDefaults.standard.set(self.isFastingTimeSet, forKey: Self.fastingTimeSetKey)
         }
     }
     

@@ -13,18 +13,18 @@ struct SettingsView: View {
     @EnvironmentObject var settings: UserSettings
     
     static let fastingTypes = UserSettings.fastingTypes
-  
+    
     var body: some View {
         Form {
             Section(header: Text("Name")) {
                 TextField("username: ", text: self.$settings.userName)
             }
-            Section {
+            Section(header: Text("Fasting type")) {
                 Picker("Intermittent fasting version", selection: self.$settings.fastingType) {
                     ForEach(0 ..< Self.fastingTypes.count) {
                         Text(Self.fastingTypes[$0])
                     }
-                }
+                }.pickerStyle(SegmentedPickerStyle())
             }
             Section(header: Text("Fasting start")) {
                 DatePicker("Please enter fasting start time", selection: self.$settings.startTime, displayedComponents: .hourAndMinute)

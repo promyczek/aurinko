@@ -75,13 +75,18 @@ struct TimerView: View {
     
     var counterView: some View {
         VStack {
-            Text("Time for \(isFastingTime ? "fasting" : "eating"). Left:")
-            Text(countDownString(from: nowDate, until: (isFastingTime ? self.settings.endTime : self.settings.startTime)))
-                .font(.largeTitle)
-                .onAppear(perform: {
-                    let _ = self.timer
-                    let _ = self.animationTimer
-                })
+            if settings.isFastingTimeSet {
+                Text("Time for \(isFastingTime ? "fasting" : "eating"). Left:")
+                Text(countDownString(from: nowDate, until: (isFastingTime ? self.settings.endTime : self.settings.startTime)))
+                    .font(.largeTitle)
+                    .onAppear(perform: {
+                        let _ = self.timer
+                        let _ = self.animationTimer
+                    })
+            } else {
+                Text("Please set your fasting hours \n to enable timer")
+                    .multilineTextAlignment(.center)
+            }
         }
     }
     
